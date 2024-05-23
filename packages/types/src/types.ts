@@ -62,30 +62,15 @@ export interface IOption {
   [key: string]: number | string | boolean;
 }
 
-export interface ITimestamp {
-  created_at?: Date;
-  updated_at?: Date;
-}
-
-export interface IModifier<T = string> {
-  created_by?: string;
-  updated_by?: string;
-}
 
 export interface IBaseModelAttributes {
-  created_by?: string;
-  updated_by?: string;
-  id?: string;
-  created_at?: Date;
-  updated_at?: Date;
+  createdBy?: string;
+  updatedBy?: string;
+  _id?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-export type modelAttributesOptionalTypes =
-  | "id"
-  | "created_at"
-  | "updated_at"
-  | "created_by"
-  | "updated_by";
 
 export enum FileTypeEnum {
   Image = "IMAGE",

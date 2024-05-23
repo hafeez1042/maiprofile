@@ -75,32 +75,3 @@
   }
 }
 
-
-/* Scrollbar width */
-::-webkit-scrollbar {
-  width: 4px;
-  height:8px;
-  border-radius: 6px;
-}
-
-/* Scrollbar Track */
-::-webkit-scrollbar-track {
-  background:  transparent; 
-}
- 
-/* Scrollbar Handle */
-::-webkit-scrollbar-thumb {
-  background: #DCDEDF; 
-  border-radius: 6px;
-}
-
-/* Scrollbar Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #999; 
-}
-
-.ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}

@@ -21,7 +21,7 @@ export interface IProfile extends IBaseModelAttributes {
   hobbies: string[];
 }
 
-export interface ISocial {
+export interface ISocial extends IBaseModelAttributes {
   name: SocialMediasEnum;
   url: string;
 }
@@ -31,7 +31,7 @@ export enum SocialMediasEnum {
   LinkedIn = "linkedin",
 }
 
-export interface IProject {
+export interface IProject extends IBaseModelAttributes {
   name: string;
   link: string;
   description: string;
@@ -41,8 +41,8 @@ export interface IProfileStyle {
   primaryColor: string;
 }
 
-export interface IEducation {}
-export interface ILanguage {
+export interface IEducation extends IBaseModelAttributes {}
+export interface ILanguage extends IBaseModelAttributes {
   name: string;
   /**
    * proficiency will be number between 0 and 10, based on that number label can be made
@@ -50,7 +50,7 @@ export interface ILanguage {
   proficiency: number;
 }
 
-export interface ICompany {
+export interface ICompany extends IBaseModelAttributes {
   companyName: string;
   industry: string;
   jobTitle: string;
@@ -59,13 +59,13 @@ export interface ICompany {
   currentlyWorksHere: boolean;
 }
 
-export interface IAward {
+export interface IAward extends IBaseModelAttributes {
   title: string;
   name: string;
   awardedOn: Date;
   description: string;
 }
-export interface ICertificates {
+export interface ICertificates extends IBaseModelAttributes {
   title: string;
   name: string;
   issuedBy: string;

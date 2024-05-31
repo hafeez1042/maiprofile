@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
-import indexRouter from "./routes";
+import {router} from "./routes";
 import { ForbiddenError } from "./errors/ForbiddenError";
 import { NotFoundError } from "./errors/NotFoundError";
 import { errorHandler } from "./errors/errorHandler";
@@ -89,7 +89,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(clientTimeZoneMiddleware);
-app.use("/", indexRouter);
+app.use("/", router);
 
 //customCssUrl:
 //"https://cdn.jsdelivr.net/npm/swagger-ui-themes@3.0.0/themes/3.x/theme-newspaper.css",

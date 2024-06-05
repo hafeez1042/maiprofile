@@ -63,10 +63,10 @@ export interface IOption {
 }
 
 
-export interface IBaseModelAttributes {
+export interface IBaseModelAttributes<T =  string> {
   createdBy?: string;
   updatedBy?: string;
-  _id?: string;
+  _id?: T;
   createdAt?: Date;
   updatedAt?: Date;
 }

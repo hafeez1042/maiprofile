@@ -1,4 +1,5 @@
 //Repository.ts
+import { IQueryStringParams } from "@repo/types/lib/types";
 import mongoose, {
   FilterQuery,
   HydratedDocument,
@@ -72,7 +73,7 @@ export abstract class Repository<
       items.length >= (queryParams?.limit || 0)
         ? items[items.length - 1]
         : null;
-    const nextCursor = lastItem ? lastItem._id.toString() : null;
+    const nextCursor = lastItem ? (lastItem._id as ObjectId).toString() : null;
 
     return {
       items: items.map(this.accessor),
@@ -146,12 +147,16 @@ export abstract class Repository<
     await this.model.deleteOne({ _id: id });
   };
 
-  public delete = async (query: IQueryStringParams, many?: boolean) => {
-    const mongoQuery = createMongoQuery(query.filter);
-    if (many) {
-      await this.model.deleteMany(mongoQuery);
+  public delete = async (query: IQueryStringParams | I | string, many?: boolean) => {
+    if (mongoose.isValidObjectId(query) || typeof query === "string") {
+      await this.model.findById(query).deleteOne();
     } else {
-      await this.model.deleteOne(mongoQuery);
+      const mongoQuery = createMongoQuery((query as IQueryStringParams).filter);
+      if (many) {
+        await this.model.deleteMany(mongoQuery);
+      } else {
+        await this.model.deleteOne(mongoQuery);
+      }
     }
   };
 
